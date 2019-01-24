@@ -1,0 +1,37 @@
+steps:
+  - label: DOES NOT specify a queue
+    command: echo 'hello world!'
+    agents:
+      buildkite_example_queues: true
+
+  - label: DOES NOT specify a queue AND requires some_binary
+    command: echo 'hello world!'
+    agents:
+      buildkite_example_queues: true
+      some_binary: some_version_of_the_binary
+
+  - label: Specifies the default queue
+    command: echo 'hello world!'
+    agents:
+      buildkite_example_queues: true
+      queue: default
+
+  - label: Specifies the default queue AND requires some_binary
+    command: echo 'hello world!'
+    agents:
+      buildkite_example_queues: true
+      queue: default
+      some_binary: some_version_of_the_binary
+
+  - label: Requires my_custom_queue
+    command: echo 'hello world!'
+    agents:
+      buildkite_example_queues: true
+      queue: my_custom_queue
+
+  - label: Requires my_custom_queue and some_binary
+    command: echo 'hello world!'
+    agents:
+      buildkite_example_queues: true
+      queue: my_custom_queue
+      some_binary: some_version_of_the_binary
