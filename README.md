@@ -22,7 +22,9 @@ command to run the buildkite agent:
 docker \
   run \
   -it \
-  -e BUILDKITE_AGENT_TOKEN="`cat ~/.buildkite/agent_token`"
+  -e BUILDKITE_AGENT_TOKEN="`cat ~/.buildkite/agent_token`" \
+  -v "$PWD/buildkite-agent.cfg:/buildkite/buildkite-agent.cfg:ro" \
+  buildkite/agent
 ```
 
 
