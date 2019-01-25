@@ -4,6 +4,11 @@ the difference between normal agent `tags` and the special
 `queue` tag. This repo presents a series of examples to
 see how they operate in practice.
 
+**[UPDATE]:** The main takeaway is that `queue` is a plain old
+regular agent tag, except that agents and jobs that do not 
+explicitly define a `queue` tag are automatically assigned
+`queue=default`.
+
 ## Get started
 You will need the Buildkite agent token from your buildkite
 account to run these examples.
@@ -26,7 +31,6 @@ docker \
   -v "$PWD/buildkite-agent.cfg:/buildkite/buildkite-agent.cfg:ro" \
   buildkite/agent
 ```
-
 
 ## Background
 When starting a buildkite agent, you can assign it zero or
@@ -71,15 +75,13 @@ sets the default queue. However, even if an agent is not
 explicitly assigned a queue, it will implicitly be added
 to the default queue.
 
-## Example 1 - agent has default queue, job does not specify queue
+An agent must match **ALL** of the tags specified by a job
+in order to run that job. If the agent matches all of the tags,
+but is in the wrong queue, then it won't run the job. If the agent
+is in the correct queue, but does not match all of the other
+tags specified by the job, then it won't run the job.
 
-## Example 2 - agent has no queue, job does not specify queue
-
-## Example 3 - agent has custom queue, job does not specify queue
-
-## Example 4 - agent has custom queue, job specifies custom queue
-
-## Example 5 - agent has custom queue, job specifies custom queue and node version
-
-## Example 5 - agent has custom queue and node version, job specifies custom queue and node version
-
+## API
+Note that the Buildkite Rest API v3 returns tags in a field called
+`meta_data`. I believe legacy versions of the Buildkite API used the
+term metadata and that was renamed to tags in v3.
