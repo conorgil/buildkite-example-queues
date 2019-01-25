@@ -95,7 +95,7 @@ file and then observe which jobs are able to run on that agent.
 
 Here is a summary:
 
-![buildkite-agent-vs-jobs-summary-chart](https://github.com/conorgil/buildkite-example-queues/buildkite-agent-vs-jobs-summary-chart.png)
+![buildkite-agent-vs-jobs-summary-chart](https://github.com/conorgil/buildkite-example-queues/blob/master/buildkite-agent-vs-jobs-summary-chart.png)
 
 A screenshot of each scenario is included in the `images/` directory.
 
